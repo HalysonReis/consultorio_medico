@@ -63,13 +63,13 @@ class Database {
 $db = new Database("medico");
 
 $medi = array(
-    'nome'=> 'clatlarinco',
-    'cpf' => '11111111111',
-    'crm' => '1111111111',
-    'especialidade' => 'urologista',
+    'nome'=> 'carlos',
+    'cpf' => '22222222222',
+    'crm' => '2222222222',
+    'especialidade' => 'pediatra',
     'telefone' => '11111111111',
-    'email' => 'rinco@gmail.com',
-    'senha' => 'pequeno123'
+    'email' => 'pedimais@gmail.com',
+    'senha' => '123'
 );
 
 $res = $db->insert($medi);
