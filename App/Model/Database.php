@@ -2,26 +2,25 @@
 
 class Database {
     private $conn;
-    private string $local = "localhost";
-    private string $db = "clinicmedica";
-    private string $user = "root";
-    private string $password = "";
-    private string $table;
-    
+    private string $local = 'localhost';
+    private string $db = 'clinicmadica';
+    private string $user = 'root';
+    private string $password = '';
+    private string $tabla;
+
     function __construct($table = null){
         $this->table = $table;
         $this->conecta();
     }
 
     private function conecta(){
-        try {
-            $this->conn = new PDO("mysql:host=".$this->local.";dbname=".$this->db,$this->user,$this->password);
+        try{
+            $this->conn = new PDO('mysql:host='.$this->local.';dbname='.$this->db, $this->user, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
             echo "foi";
         }
-        catch(PDOExption $err){
-            die("Connection failed ".$err->getMessage());
+        catch(PDOException $err){
+            die($err->getMessage);
         }
     }
 
@@ -32,21 +31,15 @@ class Database {
             return $stmt;
         }
         catch (PDOException $err){
-            die("Connection failed ".$err->getMessage());
+            die($err->getMessage());
         }
     }
 
     public function insert($values){
         $fields = array_keys($values);
+        $binds = arrar_pad([], $fields, '?');
 
-        $binds = array_pad([], count($fields), '?');
-
-        $query = 'INSERT INTO '.$this->table.' ('.implode(',',$fields).') VALUES ('.implode(',',$binds).')';
-
-        // echo '<pre>';
-        // print_r($query);
-        // echo '</pre>';
-        // exit;
+        $query = 'INSERT INTO '.$this->table. ' ('.implode(',', $fields).') VALUES ('.implode(',',$binds),')';
 
         $res = $this->execute($query, array_values($values));
 
@@ -57,28 +50,41 @@ class Database {
             return FALSE;
         }
     }
-}
 
+    public function select($where = null, $order = null, $limit = null, $fields = '*'){
+        $where = strlen($where) ? 'WHERE '.$where : '';
+        $order = strlen($order) ? 'ORDER BY '.$order : '';
+        $limit = strlen($limit) ? 'LIMIT '.$limit : '';
 
-$db = new Database("medico");
+        $query = 'SELECT '.$fields. ' FROM '. $this->table. ' '.$where. ' '.$order. ' '.limit;
 
-$medi = array(
-    'nome'=> 'carlos',
-    'cpf' => '22222222222',
-    'crm' => '2222222222',
-    'especialidade' => 'pediatra',
-    'telefone' => '11111111111',
-    'email' => 'pedimais@gmail.com',
-    'senha' => '123'
-);
+        return $this->execute($query);
+    }
 
-$res = $db->insert($medi);
+    public function update($where, $values){
+        $fields = array_keys(',', $values);
+        $param = array_values(',', $values);
 
-if ($res){
-    echo "cadastrado";
-}
-else {
-    echo 'nao foi cadastrado';
+        $query = 'UPDATE '. $this->table. ' SET '. implode('=?,', $fields),. '=? WHERE '. $where;
+
+        $res = $this->execute($query, $param);
+
+        if ($res){
+            return TRUE
+        }
+        else {
+            return FAlSE;
+        }
+    }
+
+    public function delete($where){
+        $query = 'DELETE FROM '.$this->table. ' WHERE '. $where;
+
+        $result = $this->execute($query);
+
+        return ($result->rowCount() == 1) ? TRUE : FALSE;
+    }
+
 }
 
 ?>
