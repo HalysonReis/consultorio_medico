@@ -39,7 +39,7 @@ class Database {
         $fields = array_keys($values);
         $binds = arrar_pad([], $fields, '?');
 
-        $query = 'INSERT INTO '.$this->table. ' ('.implode(',', $fields).') VALUES ('.implode(',',$binds),')';
+        $query = 'INSERT INTO '.$this->table. ' ('.implode(',', $fields).') VALUES ('.implode(',',$binds).')';
 
         $res = $this->execute($query, array_values($values));
 
@@ -65,12 +65,12 @@ class Database {
         $fields = array_keys(',', $values);
         $param = array_values(',', $values);
 
-        $query = 'UPDATE '. $this->table. ' SET '. implode('=?,', $fields),. '=? WHERE '. $where;
+        $query = 'UPDATE '. $this->table. ' SET '. implode('=?,', $fields). '=? WHERE '. $where;
 
         $res = $this->execute($query, $param);
 
         if ($res){
-            return TRUE
+            return TRUE;
         }
         else {
             return FAlSE;
