@@ -1,0 +1,70 @@
+CREATE DATABASE clinicMedica;
+use clinicMedica;
+
+CREATE TABLE medico(
+	id_medico int not null auto_increment,
+    nome VARCHAR(150) not null,
+    cpf char(11) unique not null,
+    crm char(10) unique not null,
+    especialidade varchar(200) not null,
+    telefone char(11),
+    email varchar(200) unique not null,
+    senha varchar(15) not null,
+    constraint primary key (id_medico)
+);
+
+
+CREATE TABLE cliente(
+	id_cliente int not null auto_increment,
+    nome varchar(150) not null,
+    cpf char(11) unique not null,
+    telefone char(11),
+    email varchar(150) unique not null,
+    senha varchar(15) not null,
+    data_nasc DATE,
+    constraint primary key (id_cliente)
+);
+
+CREATE TABLE consulta(
+	id_consulta int not null auto_increment,
+    id_medico int not null,
+    id_cliente int not null,
+    data_time datetime not null,
+    rua varchar(255) not null,
+    numero_rua varchar(10) not null,
+    num_sala varchar(10) not null,
+    constraint primary key (id_consulta),
+    foreign key (id_medico) references medico(id_medico),
+    foreign key (id_cliente) references cliente(id_cliente)
+);
+
+CREATE TABLE agenda(
+	id_agenda int not null auto_increment,
+    id_medico int not null,
+    id_cliente int not null,
+    id_consulta int not null,
+    status char(1) not null,
+    constraint primary key (id_agenda),
+    foreign key (id_medico) references medico(id_medico),
+    foreign key (id_cliente) references cliente(id_cliente),
+    foreign key (id_consulta) references consulta(id_consulta)
+);
+
+CREATE TABLE prontuario(
+	id_prontuario int not null auto_increment,
+    id_medico int not null,
+    id_cliente int not null,
+    doenca_preexist text,
+    alergias text,
+    medic_recentas text,
+    diagnostico text,
+    presc_medica text,
+    tipo_exemes text,
+    proc_realizado text,
+    resul_proc text,
+    data_internacao date,
+    data_alta date,
+    constraint primary key (id_prontuario),
+    foreign key (id_medico) references medico(id_medico),
+    foreign key (id_cliente) references cliente(id_cliente)
+);
