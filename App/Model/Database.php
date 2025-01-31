@@ -3,7 +3,7 @@
 class Database {
     private $conn;
     private string $local = 'localhost';
-    private string $db = 'clinicmadica';
+    private string $db = 'clinicmedica';
     private string $user = 'root';
     private string $password = '';
     private string $tabla;
@@ -20,7 +20,7 @@ class Database {
             echo "foi";
         }
         catch(PDOException $err){
-            die($err->getMessage);
+            die($err->getMessage());
         }
     }
 
@@ -37,7 +37,7 @@ class Database {
 
     public function insert($values){
         $fields = array_keys($values);
-        $binds = arrar_pad([], $fields, '?');
+        $binds = array_pad([],  count($fields), '?');
 
         $query = 'INSERT INTO '.$this->table. ' ('.implode(',', $fields).') VALUES ('.implode(',',$binds).')';
 
@@ -56,7 +56,7 @@ class Database {
         $order = strlen($order) ? 'ORDER BY '.$order : '';
         $limit = strlen($limit) ? 'LIMIT '.$limit : '';
 
-        $query = 'SELECT '.$fields. ' FROM '. $this->table. ' '.$where. ' '.$order. ' '.limit;
+        $query = 'SELECT '.$fields. ' FROM '. $this->table. ' '.$where. ' '.$order. ' '.$limit;
 
         return $this->execute($query);
     }
