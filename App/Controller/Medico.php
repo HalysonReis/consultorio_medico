@@ -35,9 +35,9 @@ class Medico {
         return $res;
     }
 
-    public function burcar_por_id($id){
+    public function burcar_por_id($busca){
         $db = new Database('medico');
-        $res = $db->select('id_medico = '.$id)->fetchObject(self::class);
+        $res = $db->select($busca)->fetchObject(self::class);
         return $res;
     }
 
@@ -46,7 +46,7 @@ class Medico {
         $res = $db->update(
             'id_medico = '. $this->id_medico,
             [
-                'nome' => $this->name,
+                'nome' => $this->nome,
                 'cpf' => $this->cpf,
                 'crm' => $this->crm,
                 'especialidade' => $this->especialidade,
@@ -65,31 +65,22 @@ class Medico {
     }
 }
 
-
 $med = new Medico();
-// $med->name = 'cleidinelda';
-// $med->cpf = 11223344556;
-// $med->crm = 11223344557;
-// $med->especialidade = "Cancer";
-// $med->telefone = '992346775';
-// $med->email = 'cancer@gmail.com';
-// $med->senha = '123';
 
-// $result = $med->buscar();
+$email = 'id_medico = 3';
 
-// foreach($result as $medico){
-//     echo "<pre>";
-//     print_r($medico);
-//     echo "</pre>";
-// }
+$res = $med->burcar_por_id($email);
 
-$result = $med->burcar_por_id(3);
+$med->id_medico = $res->id_medico;
+$med->nome = $res->nome;
+$med->cpf = $res->cpf;
+$med->crm = $res->crm;
+$med->especialidade = $res->especialidade;
+$med->telefone = $res->telefone;
+$med->email = $res->email;
+$med->senha = $res->senha;
 
-print_r($result);
+$med->telefone = '3232323232';
 
-$med->telefone = '6666666';
-
-$res_atu = $med->excluir();
-
-
+$med->atualizar();
 ?>

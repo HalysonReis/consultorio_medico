@@ -17,7 +17,7 @@ class Database {
         try{
             $this->conn = new PDO('mysql:host='.$this->local.';dbname='.$this->db, $this->user, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-            echo "foi";
+            //echo "foi";
         }
         catch(PDOException $err){
             die($err->getMessage());
@@ -57,13 +57,17 @@ class Database {
         $limit = strlen($limit) ? 'LIMIT '.$limit : '';
 
         $query = 'SELECT '.$fields. ' FROM '. $this->table. ' '.$where. ' '.$order. ' '.$limit;
+        // echo $query;
+        // exit;
 
         return $this->execute($query);
     }
 
     public function update($where, $values){
-        $fields = array_keys(',', $values);
-        $param = array_values(',', $values);
+        // print_r(array_keys(",",$values));
+        // exit;
+        $fields = array_keys($values);
+        $param = array_values($values);
 
         $query = 'UPDATE '. $this->table. ' SET '. implode('=?,', $fields). '=? WHERE '. $where;
 
