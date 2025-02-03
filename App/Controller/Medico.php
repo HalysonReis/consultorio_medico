@@ -65,22 +65,4 @@ class Medico {
     }
 }
 
-$med = new Medico();
-
-$email = 'id_medico = 3';
-
-$res = $med->burcar_por_id($email);
-
-$med->id_medico = $res->id_medico;
-$med->nome = $res->nome;
-$med->cpf = $res->cpf;
-$med->crm = $res->crm;
-$med->especialidade = $res->especialidade;
-$med->telefone = $res->telefone;
-$med->email = $res->email;
-$med->senha = $res->senha;
-
-$med->telefone = '3232323232';
-
-$med->atualizar();
 ?>

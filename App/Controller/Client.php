@@ -14,7 +14,7 @@ class Cliente {
         $db = new Database('cliente');
         $res = $db->insert(
             [
-                'nome'      => $this->name,
+                'nome'      => $this->nome,
                 'cpf'       => $this->cpf,
                 'telefone'  => $this->telefone,
                 'email'     => $this->email,
@@ -32,9 +32,9 @@ class Cliente {
         return $res;
     }
 
-    public function burcar_por_id($busca){
+    public function burcar_por_id($id){
         $db = new Database('cliente');
-        $res = $db->select($busca)->fetchObject(self::class);
+        $res = $db->select('id_cliente = '. $id)->fetchObject(self::class);
         return $res;
     }
 
@@ -60,4 +60,5 @@ class Cliente {
         return $res;
     }
 }
+
 ?>

@@ -64,8 +64,6 @@ class Database {
     }
 
     public function update($where, $values){
-        // print_r(array_keys(",",$values));
-        // exit;
         $fields = array_keys($values);
         $param = array_values($values);
 
