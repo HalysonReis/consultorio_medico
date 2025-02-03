@@ -1,3 +1,17 @@
+<?php
+
+require '../Controller/Medico.php';
+require '../Controller/Cliente.php';
+
+$cliente = new Cliente();
+$medico = new Medico();
+
+if (isset($_POST['login'])){
+    echo "tem";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +38,7 @@
             <a href="cadastro.php" class="link-cadastro">Cadastrar-se Aqui</a>
         </form>
         <div class="imgs">
-            <h1 class="title-login">Realizar Login</h1>
+            <h1 class="title-login" name="login">Realizar Login</h1>
             <img src="img/login.png" alt="" class="img">
         </div>
     </div>
