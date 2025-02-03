@@ -1,3 +1,17 @@
+<?php
+
+require '../Controller/Cliente.php';
+
+$Cliente = new Cliente();
+
+if (isset($_POST)){
+    $nome = $_POST['nome'];
+
+    echo $nome;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
