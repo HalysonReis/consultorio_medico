@@ -1,5 +1,5 @@
 <?php
 
-header('location: App/View/home.html')
+header('location: App/View/home.html');
 
 ?>

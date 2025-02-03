@@ -4,10 +4,18 @@ require '../Controller/Cliente.php';
 
 $Cliente = new Cliente();
 
-if (isset($_POST)){
-    $nome = $_POST['nome'];
+if (isset($_POST['cadastrar'])){
+    $Cliente->nome = $_POST['nome'];
+    $Cliente->cpf = $_POST['cpf'];
+    $Cliente->telefone = $_POST['telefone'];
+    $Cliente->email = $_POST['email'];
+    $Cliente->senha = $_POST['senha'];
+    $Cliente->data_nasc = $_POST['data_nasc'];
 
-    echo $nome;
+    $Cliente->cadastrar();
+
+    header("Refresh: 0");
+
 }
 
 ?>
@@ -55,7 +63,7 @@ if (isset($_POST)){
                 <input type="date" name="data_nasc" id="data_nasc">
             </div>
 
-            <button type="submit"v class="btn-login">Cadastrar-se</button>
+            <button type="submit" name="cadastrar" class="btn-login">Cadastrar-se</button>
         </form>
         <div class="imgs">
             <h1 class="title-login">Cadastro</h1>

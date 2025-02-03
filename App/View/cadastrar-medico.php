@@ -1,3 +1,26 @@
+<?php
+
+require '../Controller/Medico.php';
+
+$Medico = new Medico();
+
+if (isset($_POST['cadastrar'])){
+    $Medico->nome = $_POST['nome'];
+    $Medico->cpf = $_POST['cpf'];
+    $Medico->crm = $_POST['crm'];
+    $Medico->especialidade = $_POST['especialidade'];
+    $Medico->telefone = $_POST['telefone'];
+    $Medico->email = $_POST['email'];
+    $Medico->senha = $_POST['senha'];
+
+    $Medico->cadastrar();
+
+    header("Refresh: 0");
+
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,12 +68,8 @@
                 <label class="label">Senha</label>
                 <input type="password" name="senha" id="senha" class="input">
             </div>
-            <div class="div-input">
-                <label class="label">Data de Nascimento</label>
-                <input type="date" name="data_nasc" id="data_nasc">
-            </div>
 
-            <button type="submit"v class="btn-login">Cadastrar</button>
+            <button type="submit" name="cadastrar" class="btn-login">Cadastrar</button>
         </form>
         <div class="imgs">
             <h1 class="title-login">Cadastro de Medico</h1>
