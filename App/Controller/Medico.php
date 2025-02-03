@@ -16,7 +16,7 @@ class Medico {
         $db = new Database('medico');
         $res = $db->insert(
             [
-                'nome'          => $this->name,
+                'nome'          => $this->nome,
                 'cpf'           => $this->cpf,
                 'crm'           => $this->crm,
                 'especialidade' => $this->especialidade,
