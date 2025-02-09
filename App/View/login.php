@@ -1,13 +1,47 @@
 <?php
 
-require '../Controller/Medico.php';
-require '../Controller/Cliente.php';
+require_once '../Controller/Medico.php';
+require_once '../Controller/Cliente.php';
 
-$cliente = new Cliente();
-$medico = new Medico();
 
 if (isset($_POST['login'])){
-    echo "tem";
+    $cli = new Cliente;
+    $med = new Medico;
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    // echo $email;
+    // echo "<br>";
+    // echo $senha;
+    
+    $clien = $cli->buscar();
+    $medicu = $med->buscar();
+    function logar($email, $senha, array &$query){
+        foreach ($query as $pessoa) {
+            if ($pessoa->email == $email && $pessoa->senha == $senha){
+                return TRUE;
+            }
+            else if ($pessoa->email != $email || $pessoa->senha != $senha){
+                return FALSE;
+                break;
+                }
+            }
+    }
+    
+    try{
+        if (logar($email, $senha, $clien)){
+            header('location: ./agendas.html');
+        }
+        else if (logar($email, $senha, $medicu)){
+            header('location: ./area-medico.html');
+        }
+        else{
+            echo "<script>alert('Os dados inseridos estao incorretos')</script>";
+        }
+    }
+    catch (Execption $err) {
+        echo "<script>alert('Os dados estao incorretos')</script>";
+    }
 }
 
 ?>
@@ -34,11 +68,11 @@ if (isset($_POST['login'])){
                 <label class="label">Senha</label>
                 <input type="password" name="senha" id="senha" class="input">
             </div>
-            <button type="submit"v class="btn-login">Login</button>
+            <button type="submit" name="login" class="btn-login">Login</button>
             <a href="cadastro.php" class="link-cadastro">Cadastrar-se Aqui</a>
         </form>
         <div class="imgs">
-            <h1 class="title-login" name="login">Realizar Login</h1>
+            <h1 class="title-login" >Realizar Login</h1>
             <img src="img/login.png" alt="" class="img">
         </div>
     </div>

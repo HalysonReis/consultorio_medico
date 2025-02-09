@@ -1,5 +1,5 @@
 <?php
-require "../Model/Database.php";
+require_once "../Model/Database.php";
 
 class Cliente {
     public int $id_cliente;
@@ -32,9 +32,9 @@ class Cliente {
         return $res;
     }
 
-    public function burcar_por_id($id){
+    public function buscar_por_id($where){
         $db = new Database('cliente');
-        $res = $db->select('id_cliente = '. $id)->fetchObject(self::class);
+        $res = $db->select($where)->fetchObject(self::class);
         return $res;
     }
 
