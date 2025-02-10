@@ -30,7 +30,7 @@ if (isset($_POST['login'])){
     
     try{
         if (logar($email, $senha, $clien)){
-            header('location: ./agendas.html');
+            header('location: ./consultas.php');
         }
         else if (logar($email, $senha, $medicu)){
             header('location: ./area-medico.html');

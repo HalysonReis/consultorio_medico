@@ -1,5 +1,5 @@
 <?php
-require "../Model/Database.php";
+require_once "../Model/Database.php";
 
 class Consulta {
     public int $id_consulta;
@@ -14,7 +14,6 @@ class Consulta {
         $db = new Database('consulta');
         $res = $db->insert(
             [
-                'id_consulta'   => $this->id_consulta,
                 'id_medico'     => $this->id_medico,
                 'id_cliente'    => $this->id_cliente,
                 'data_time'     => $this->data_time,
