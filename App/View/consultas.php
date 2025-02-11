@@ -3,10 +3,12 @@
 require_once '../Controller/Medico.php';
 require_once '../Controller/Cliente.php';
 require_once '../Controller/Consulta.php';
+require_once '../Controller/Prontuario.php';
 
 $med = new Medico();
 $cli = new Cliente();
 $con = new Consulta();
+$pron = new Prontuario();
 
 $medicos = $med->buscar();
 
@@ -31,6 +33,9 @@ if (isset($_GET['id'])){
                 $con->numero_rua = "2";
                 $con->num_sala = "101";
                 $mar = $con->cadastrar();
+                $pron->id_medico = $id_med;
+                $pron->id_cliente = $pessoa->id_cliente;
+                $prontu = $pron->cadastrar();
             }
             }
         }

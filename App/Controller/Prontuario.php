@@ -1,7 +1,7 @@
 <?php
-require "../Model/Database.php";
+require_once "../Model/Database.php";
 
-class Consulta {
+class Prontuario {
     public int $id_prontuario;
     public int $id_medico;
     public int $id_cliente;
@@ -20,19 +20,8 @@ class Consulta {
         $db = new Database('prontuario');
         $res = $db->insert(
             [
-                'id_agenda'         => $this->id_prontuario,
                 'id_medico'         => $this->id_medico,
-                'id_cliente'        => $this->id_cliente,
-                'doenca_preexist'   => $this->doenca_preexist,
-                'alergias'          => $this->alergias,
-                'medic_recentas'    => $this->medic_recentas,
-                'diagnostico'       => $this->diagnostico,
-                'presc_medica'      => $this->presc_medica,
-                'tipo_exemes'       => $this->tipo_exemes,
-                'proc_realizado'    => $this->proc_realizado,
-                'resul_proc'        => $this->resul_proc,
-                'data_internacao'   => $this->data_internacao,
-                'data_alta'         => $this->data_alta
+                'id_cliente'        => $this->id_cliente
             ]
             );
 
