@@ -1,8 +1,6 @@
 CREATE DATABASE clinicMedica;
 use clinicMedica;
 
-select * from prontuario;
-
 CREATE TABLE medico(
 	id_medico int not null auto_increment,
     nome VARCHAR(150) not null,
@@ -73,14 +71,22 @@ CREATE TABLE prontuario(
 
 DELIMITER $
 CREATE TRIGGER tg_criarAgenda
-BEFORE INSERT ON consulta
-FOR EACH ROW
+AFTER INSERT ON consulta
+FOR each row
 BEGIN
-	INSERT INTO agenda VALUES (NEW.id_medico, NEW.id_consulta, NEW.id_cliente);
-END$
+	INSERT INTO agenda (id_medico, id_cliente, id_consulta, status) VALUES (NEW.id_medico, NEW.id_cliente, NEW.id_consulta, "1");
+END $
+
+CREATE TRIGGER tg_criarProntuario
+AFTER INSERT ON consulta
+FOR each row
+BEGIN
+	INSERT INTO prontuario (id_medico, id_cliente) VALUES (NEW.id_medico, NEW.id_cliente);
+END $
 DELIMITER ;
 
-select * from consulta;
+select * 
+from medico
+inner join cliente
+inner join consulta;
 
-INSERT INTO consulta (id_medico, id_cliente, data_time, rua, numero_rua, num_sala) 
-VALUES (6,6, '2024-03-04 12:29:00', 'R. padre coelho', '22', '102');
