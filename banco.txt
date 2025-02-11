@@ -1,6 +1,8 @@
 CREATE DATABASE clinicMedica;
 use clinicMedica;
 
+select * from prontuario;
+
 CREATE TABLE medico(
 	id_medico int not null auto_increment,
     nome VARCHAR(150) not null,
@@ -68,3 +70,17 @@ CREATE TABLE prontuario(
     foreign key (id_medico) references medico(id_medico),
     foreign key (id_cliente) references cliente(id_cliente)
 );
+
+DELIMITER $
+CREATE TRIGGER tg_criarAgenda
+BEFORE INSERT ON consulta
+FOR EACH ROW
+BEGIN
+	INSERT INTO agenda VALUES (NEW.id_medico, NEW.id_consulta, NEW.id_cliente);
+END$
+DELIMITER ;
+
+select * from consulta;
+
+INSERT INTO consulta (id_medico, id_cliente, data_time, rua, numero_rua, num_sala) 
+VALUES (6,6, '2024-03-04 12:29:00', 'R. padre coelho', '22', '102');
