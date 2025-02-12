@@ -33,7 +33,6 @@ if (isset($_GET['id'])){
                 $con->rua = "R.bem ali";
                 $con->numero_rua = "2";
                 $con->num_sala = "101";
-                print_r($con);
                 $mar = $con->cadastrar();
                 $pron->id_medico = $id_med;
                 $pron->id_cliente = $pessoa->id_cliente;
