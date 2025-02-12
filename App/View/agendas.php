@@ -24,8 +24,8 @@ $agenda_cli = $agenda->buscar();
     <header class="header-area">
         <ul class="list-area">
             <li class="item-list"><a href="./consultas.php" class="link-pages">Consultas</a></li>
-            <li class="item-list"><a href="./agendas.html" class="link-pages">Agenda</a></li>
-            <li class="item-list"><a href="./prontuario.html" class="link-pages">Prontuario</a></li>
+            <li class="item-list"><a href="./agendas.php" class="link-pages">Agenda</a></li>
+            <li class="item-list"><a href="./prontuario.php" class="link-pages">Prontuario</a></li>
         </ul>
     </header>
     <section class="marque-con">

@@ -29,10 +29,11 @@ if (isset($_GET['id'])){
             if ($pessoa->email == $email){
                 $con->id_medico = $id_med;
                 $con->id_cliente = $pessoa->id_cliente;
-                $con->data_time = "2025-2-9 22:52";
+                $con->data_time = "2025-02-09 22:52:00";
                 $con->rua = "R.bem ali";
                 $con->numero_rua = "2";
                 $con->num_sala = "101";
+                print_r($con);
                 $mar = $con->cadastrar();
                 $pron->id_medico = $id_med;
                 $pron->id_cliente = $pessoa->id_cliente;
@@ -64,7 +65,7 @@ if (isset($_GET['id'])){
         <ul class="list-area">
             <li class="item-list"><a href="./consultas.php" class="link-pages">Consultas</a></li>
             <li class="item-list"><?php echo '<a href="agendas.php?id='. $id_cli. '" class="link-marque">Agendas</a>';?></li>
-            <li class="item-list"><a href="./prontuario.html" class="link-pages">Prontuario</a></li>
+            <li class="item-list"><a href="./prontuario.php" class="link-pages">Prontuario</a></li>
         </ul>
     </header>
     <main class="area-principal">

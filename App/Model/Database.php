@@ -71,12 +71,7 @@ class Database {
 
         $res = $this->execute($query, $param);
 
-        if ($res){
-            return TRUE;
-        }
-        else {
-            return FAlSE;
-        }
+        return ($res->rowCount() == 1) ? TRUE : FALSE;
     }
 
     public function delete($where){

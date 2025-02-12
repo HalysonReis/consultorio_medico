@@ -5,16 +5,16 @@ class Prontuario {
     public int $id_prontuario;
     public int $id_medico;
     public int $id_cliente;
-    public string $doenca_preexist;
-    public string $alergias;
-    public string $medic_recentas;
-    public string $diagnostico;
-    public string $presc_medica;
-    public string $tipo_exemes;
-    public string $proc_realizado;
-    public string $resul_proc;
-    public string $data_internacao;
-    public string $data_alta;
+    public $doenca_preexist;
+    public $alergias;
+    public $medic_recentas;
+    public $diagnostico;
+    public $presc_medica;
+    public $tipo_exemes;
+    public $proc_realizado;
+    public $resul_proc;
+    public $data_internacao;
+    public $data_alta;
 
     public function cadastrar(){
         $db = new Database('prontuario');
@@ -45,9 +45,6 @@ class Prontuario {
         $res = $db->update(
             'id_prontuario = '. $this->id_prontuario,
             [
-                'id_agenda'         => $this->id_prontuario,
-                'id_medico'         => $this->id_medico,
-                'id_cliente'        => $this->id_cliente,
                 'doenca_preexist'   => $this->doenca_preexist,
                 'alergias'          => $this->alergias,
                 'medic_recentas'    => $this->medic_recentas,
