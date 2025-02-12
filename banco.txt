@@ -85,8 +85,11 @@ BEGIN
 END $
 DELIMITER ;
 
-select * 
-from medico
-inner join cliente
+CREATE VIEW vw_agenda as
+select 
+m1.id_medico, m1.nome, m1.crm, m1.especialidade, m1.telefone, 
+c1.id_cliente, c1.nome as nome_cli, c1.cpf as cpf_cli, c1.telefone as telefone_cli, 
+consulta.data_time, consulta.rua, consulta.numero_rua, consulta.num_sala
+from medico m1
+left join cliente c1 on (m1.nome = c1.nome)
 inner join consulta;
-

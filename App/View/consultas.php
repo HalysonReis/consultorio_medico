@@ -12,6 +12,7 @@ $pron = new Prontuario();
 
 $medicos = $med->buscar();
 
+$id_cli = 3;
 if (isset($_GET['id'])){
     $id_med = $_GET['id'];
     echo "
@@ -36,6 +37,8 @@ if (isset($_GET['id'])){
                 $pron->id_medico = $id_med;
                 $pron->id_cliente = $pessoa->id_cliente;
                 $prontu = $pron->cadastrar();
+                $id_cli = $pessoa->id_cliente;
+                break;
             }
             }
         }
@@ -60,13 +63,13 @@ if (isset($_GET['id'])){
     <header class="header-area">
         <ul class="list-area">
             <li class="item-list"><a href="./consultas.php" class="link-pages">Consultas</a></li>
-            <li class="item-list"><a href="./agendas.html" class="link-pages">Agenda</a></li>
+            <li class="item-list"><?php echo '<a href="agendas.php?id='. $id_cli. '" class="link-marque">Agendas</a>';?></li>
             <li class="item-list"><a href="./prontuario.html" class="link-pages">Prontuario</a></li>
         </ul>
     </header>
     <main class="area-principal">
         <section class="marque-con">
-            <h1 class="title">voce nao tem nenhuma consulta</h1>
+            <h1 class="title">Suas consultas</h1>
             <table class="table-med">
                 <thead class="t-cabeca">
                     <tr class="t-cols">

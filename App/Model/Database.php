@@ -57,7 +57,7 @@ class Database {
         $limit = strlen($limit) ? 'LIMIT '.$limit : '';
 
         $query = 'SELECT '.$fields. ' FROM '. $this->table. ' '.$where. ' '.$order. ' '.$limit;
-        // echo $query;
+        // print_r($query);
         // exit;
 
         return $this->execute($query);
