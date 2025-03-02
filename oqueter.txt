@@ -1,0 +1,24 @@
+todo o site tem que suportar mobile e desktop
+
+pages clientes
+  home
+  cadastro de cliente
+  login
+  apos login do cliente
+    marcar consultas - listar medico
+    apos marcar consulta
+      listar prontuario
+      listar agendas
+      listar consulta
+        desmarcar consulta
+        remarcar consulta
+
+pages adm
+  cadastrar medico
+  listar medico com deletar
+  atualizar medicos
+  listar agendas
+  listar prontuarios
+  listar consulta
+    desmancar e remarcar consulta
+

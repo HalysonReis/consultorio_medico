@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sistema da clinica medica</title>
-    <link rel="stylesheet" href="css/css-home.css">
+    <link rel="stylesheet" href="../../Public/css/css-menu.css">
 </head>
 <body>
     <?php
