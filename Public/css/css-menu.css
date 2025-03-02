@@ -1,0 +1,8 @@
+.header-home {
+  width: 100%;
+  padding: 20px;
+  background-color: aqua;
+  display: flex;
+  aling-item: center;
+  justify-content: center;
+}
