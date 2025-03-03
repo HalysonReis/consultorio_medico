@@ -1,8 +1,50 @@
 .header-home {
   width: 100%;
-  padding: 20px;
-  background-color: aqua;
+  padding: 10px 20px;
+  background-color: #2342A1;
+  display: flex;
+  aling-item: center;
+  justify-content: space-between;
+}
+
+.link-home {
+  width: 50px;
+  heigth: 50px;
+  display: flex;
+  aling-item: center;
+  justify_content: center;
+}
+
+.home-volt {
+  width: 100%;
+}
+
+.btns-loca {
+  padding: 5px;
   display: flex;
   aling-item: center;
   justify-content: center;
+  gap: 10px;
+}
+
+.btn-login {
+  background-color: #A6CCEA;
+  padding: 0px 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn-cadastro {
+  background-color: #63A196;
+}
+
+.link-menu {
+  color: white;
+  text-decoration: none;
+}
+
+.link-login {
+    color: black;
 }
