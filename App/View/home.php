@@ -12,7 +12,9 @@
     include '../../Public/assets/banner.html'
     ?>
     <main class="main">
-       
+      <?php
+        include '../../Public/assets/main.html';
+      ?>
     </main>
 
 </body>

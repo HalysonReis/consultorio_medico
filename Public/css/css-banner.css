@@ -35,3 +35,29 @@
   border: none;
   border-radius: 2px;
 }
+
+@media screen and (min-width: 1320px){
+  .banner {
+    height: 50vh;
+    background-size: contain;
+    background-position: right;
+    padding-left: 200px;
+  }
+
+  .text-banner{
+    width: 50%;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .text-title{
+    font-size: 1.5rem;
+  }
+
+  .btn-quero {
+    margin-top: 60px;
+    font-size: 1.5rem;
+  }
+}
