@@ -5,7 +5,14 @@
     "autoload": {
         "psr-4": {
             "App\\": "App/"
-        }
+        },
+        "classmap": [
+            "App/Model/",
+            "App/Controller"
+        ],
+        "files": [
+            "App/Model/.config.php"
+        ]
     },
     "authors": [
         {

@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Halysonreis\\ConsultorioMedico\\' => array($baseDir . '/src'),
+    'App\\' => array($baseDir . '/App'),
 );
