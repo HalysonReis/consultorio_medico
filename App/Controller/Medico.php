@@ -72,12 +72,12 @@ class Medico extends Pessoa{
 
         $values2 = [
             'nome' => $this->nome,
-            // 'telefone' => $this->telefone,
-            // 'email' => $this->email,
-            // 'cpf' => $this->cpf,
-            // 'senha' => $this->senha,
-            // 'perfil' => 'med',
-            // 'img_perfil' => $this->img_perfil,
+            'telefone' => $this->telefone,
+            'email' => $this->email,
+            'cpf' => $this->cpf,
+            'senha' => $this->senha,
+            'perfil' => 'med',
+            'img_perfil' => $this->img_perfil,
         ];
 
         $res = $db->update_all($values1, $values2, 'pessoa', 'id_pessoa', 'id_medico = '. $id);
@@ -88,14 +88,14 @@ class Medico extends Pessoa{
 
 $med = new Medico();
 
-$med->nome = 'eumensooooooooooooooooooooooooooooooooooooooooooooooooo';
-$med->telefone = '24636846758';
-$med->email = 'menso@mgial.com';
-$med->cpf = '576845346';
-$med->senha = '12346534';
-$med->img_perfil = 'rgjkdrikhnsdijhnjmsr';
+$med->nome = 'sopracomfirmar';
+$med->telefone = '678888888888';
+$med->email = 'foiheheheh@mgial.com';
+$med->cpf = '356845684';
+$med->senha = '333333333';
+$med->img_perfil = 'foimesmo';
 $med->crm = '1243634574';
-$med->especialidade = 'cardiaco';
+$med->especialidade = 'veraprostata';
 
 $med->atualizar(2);
 

@@ -36,17 +36,6 @@ class Database {
         }
     }
 
-    public function especialImplode($array = [], $table){
-    $query = '';
-    $separator = count($array) > 1 ? ' =?, ' : ' =? ';
-
-    foreach ($array as $key => $value) {
-        $query .= $table.".".$key.$separator;
-    }
-
-    return $query;
-}
-
     public function execute($query, $binds = []){
         try {
 
@@ -115,17 +104,15 @@ class Database {
     }
 
     public function update_all($values1, $values2, $tableP, $id_name, $where){
-        $where = strlen($where) ? " WHERE pessoa.". $where : '';
+        $where = strlen($where) ? " WHERE ". $where : '';
         $fields = array_keys($values1);
+        $fields2 = array_keys($values2);
         $masterArray = array_merge($values1, $values2);
         $param = array_values($masterArray);
 
-        $query = "UPDATE ". $this->table. ' SET '. implode(' =? , ', $fields).' =? INNER JOIN '. $tableP. " ON medico.".$id_name. " = pessoa.".$id_name." SET ". $this->especialImplode($values2, 'pessoa'). ' '. $where;
+        $query = "UPDATE ". $this->table. " SET ". implode('=?,', $fields). "=? ". $where. "; UPDATE ". $tableP. " SET ". implode('=?,', $fields2). "=? WHERE ". $id_name. " = ( SELECT ". $id_name. " FROM ".$this->table. $where. ")";
         
-        // echo $query;
-        // exit;
         $res = $this->execute($query, $param);
-
         return $res ? TRUE : FALSE;
     }
 
@@ -134,4 +121,15 @@ class Database {
         return $this->execute($query) ? true : false;
     }
 }
+
+// update medico
+// set
+// crm = '234634532', especialidade = 'vaiii'
+// where id_medico = 2;
+
+// update pessoa 
+// set
+// nome = "oooooooooooo",
+// email = "vaipf@gmai.com"
+// where id_pessoa = (select id_pessoa from medico where id_medico = 2);
 ?>
