@@ -93,10 +93,4 @@ class Medico extends Pessoa{
     }
 }
 
-$med = new Medico();
-
-echo $med->excluir(1);
-
-
-
 ?>
