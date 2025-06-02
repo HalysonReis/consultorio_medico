@@ -84,27 +84,18 @@ class Medico extends Pessoa{
 
         return $res ? TRUE : FALSE;
     }
+
+    public function excluir($id){
+        $db = new Database('pessoa');
+
+        $res = $db->delete('id_pessoa = '. $id);
+        return $res;
+    }
 }
 
 $med = new Medico();
 
-$med->nome = 'sopracomfirmar';
-$med->telefone = '678888888888';
-$med->email = 'foiheheheh@mgial.com';
-$med->cpf = '356845684';
-$med->senha = '333333333';
-$med->img_perfil = 'foimesmo';
-$med->crm = '1243634574';
-$med->especialidade = 'veraprostata';
-
-$med->atualizar(2);
-
-
-// $med->cadastar();
-
-// echo "<pre>";
-// print_r($med->buscar());
-// echo "<pre>";
+echo $med->excluir(1);
 
 
 

@@ -122,14 +122,5 @@ class Database {
     }
 }
 
-// update medico
-// set
-// crm = '234634532', especialidade = 'vaiii'
-// where id_medico = 2;
 
-// update pessoa 
-// set
-// nome = "oooooooooooo",
-// email = "vaipf@gmai.com"
-// where id_pessoa = (select id_pessoa from medico where id_medico = 2);
 ?>
