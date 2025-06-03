@@ -19,5 +19,7 @@
             "name": "halysonreis"
         }
     ],
-    "require": {}
+    "require": {
+        "phpmailer/phpmailer": "^6.10"
+    }
 }

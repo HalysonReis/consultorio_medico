@@ -11,6 +11,10 @@ class ComposerStaticInita9f6c6c4e4a22dd784bf23e9b7b3f6a5
     );
 
     public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -18,6 +22,10 @@ class ComposerStaticInita9f6c6c4e4a22dd784bf23e9b7b3f6a5
     );
 
     public static $prefixDirsPsr4 = array (
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App',
@@ -25,6 +33,10 @@ class ComposerStaticInita9f6c6c4e4a22dd784bf23e9b7b3f6a5
     );
 
     public static $classMap = array (
+        'App\\Controller\\Cliente' => __DIR__ . '/../..' . '/App/Controller/Cliente.php',
+        'App\\Controller\\Medico' => __DIR__ . '/../..' . '/App/Controller/Medico.php',
+        'App\\Controller\\Pessoa' => __DIR__ . '/../..' . '/App/Controller/Pessoa.php',
+        'App\\Model\\Database' => __DIR__ . '/../..' . '/App/Model/Database.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
