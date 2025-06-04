@@ -1,5 +1,10 @@
 <?php
 require_once('../../vendor/autoload.php');
+use PHPMailer\PHPMailer\PHPMailer;
+
+if(isset($_POST['enviar'])){
+    $mail = new PHPMailer(true);
+}
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +29,7 @@ require_once('../../vendor/autoload.php');
         <textarea name="mensagem" id="mensagem" cols="30" rows="10" require></textarea>
         <br>
         <input type="reset" value="cancelar">
-        <input type="submit" value="enviar">
+        <input type="submit" name="enviar" value="enviar">
     </form>
 </body>
 </html>
